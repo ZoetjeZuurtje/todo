@@ -49,6 +49,8 @@ class TodoItem {
 
 class Project {
     constructor(name, description, todoItems, sortingSetting = 'alphabet') {
+
+        // todoItems should always be an array
         this.todoList = todoItems;
         this.name = name;
         this.description = description;
@@ -89,17 +91,17 @@ class Project {
     }
 
     toJSON() {
-        let todoListJSON = []; // JSON list of TodoItems
-        for (let i = 0; i < this.todoList; i++) {
-            const todo = this.todoList[i];
+        let todoListJSON = [];
+        this.todoList.forEach(todo => {
             todoListJSON.push(todo.toJSON());
-        }
-        return { // The actual Project as JSON
+        });
+        let objectInformation = {
             todoList: todoListJSON,
-            name: this.name,
+            projectName: this.name,
             description: this.description,
             sortingSetting: this.sortingSetting
-        };
+        }
+        return objectInformation
     }
 }
 
@@ -113,15 +115,31 @@ class ProjectManager {
     }
 
     save() {
+        let savedProjects = []
         for (let i = 0; i < this.projects.length; i++) {
-            const projectJSON = this.projects[projectIndex].toJSON();
-            localStorage.setItem(i, projectJSON);
+            const projectJSON = this.projects[i].toJSON();
+            console.log(projectJSON);
+            savedProjects.push(projectJSON);
+        }
+
+        localStorage.setItem('projects', JSON.stringify(savedProjects));
+        console.log(`Final save: ${savedProjects}`);
+    }
+
+    load() {
+        const STORAGE_KEY = 'projects';
+        const json = JSON.parse(localStorage.getItem(STORAGE_KEY));
+
+        this.clearProjects();
+
+        for (let i = 0; i < json.length; i++) {
+            let loadedProject = this.loadProject(json[i]);
+            this.add(loadedProject);
         }
     }
 
-    load(key) {
-        const json = localStorage.getItem(key);
-
+    loadProject(json) {
+        console.log(json);
         let todoList = [];
         for (let jsonTodo in json.todoList) {
             const todo = new TodoItem(
@@ -137,28 +155,29 @@ class ProjectManager {
         }
 
         const project = new Project(
-            json.name,
+            json.projectName,
             json.description,
             todoList,
             json.sortingSetting
         );
 
-        this.add(project);
+        return project;
     }
 
+    clearProjects() {
+        this.projects = [];
+    }
 }
 
 
 function createDummyProject() {
     let mowTheLawn = new TodoItem('Mow the lawn', 'Cut the grass to make the lawn look nicer', new Date(), 1, 'Make sure there are no zombies', '');
     let paintDoors = new TodoItem('Paint the doors', 'The doors could use a nice lick of paint', new Date(), 2, '', '');
-    let project = new Project('Home Renovation', '', mowTheLawn, paintDoors);
+    let project = new Project('Home Renovation', '', [mowTheLawn, paintDoors]);
     return project;
 }
 
-
 const projects = [];
-
 
 window.createDummyProject = createDummyProject;
 window.projectManager = ProjectManager;
