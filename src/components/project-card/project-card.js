@@ -1,7 +1,7 @@
 const main = document.querySelector('main');
 
 const dropCard = (event) => {
-    const {x, y, height, width} = main.getBoundingClientRect();
+    const {x, y} = main.getBoundingClientRect();
     console.log(x, y)
     const widthOffset = event.target.getBoundingClientRect().width / 2;
     const headerOffset = event.target.querySelector('.project-drag-button').getBoundingClientRect().height / 2;
