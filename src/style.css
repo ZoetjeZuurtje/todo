@@ -1,0 +1,21 @@
+@import './components/project-card/project-card.css';
+@import './layout.css';
+@import './utilityClasses.css';
+
+:root {
+    --primary-color: black;
+}
+
+* {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#header {
+    padding: 10px;
+}

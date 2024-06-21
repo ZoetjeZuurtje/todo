@@ -1,0 +1,11 @@
+.project-card {
+    display: inline-block;
+    height: 300px;
+    width: 200px;
+    border-radius: 15px;
+    resize: both;
+}
+
+.project-card header {
+    
+}

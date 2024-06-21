@@ -49,8 +49,6 @@ class TodoItem {
 
 class Project {
     constructor(name, description, todoItems, sortingSetting = 'alphabet') {
-
-        // todoItems should always be an array
         this.todoList = todoItems;
         this.name = name;
         this.description = description;
@@ -169,15 +167,30 @@ class ProjectManager {
     }
 }
 
-
 function createDummyProject() {
     let mowTheLawn = new TodoItem('Mow the lawn', 'Cut the grass to make the lawn look nicer', new Date(), 1, 'Make sure there are no zombies', '');
     let paintDoors = new TodoItem('Paint the doors', 'The doors could use a nice lick of paint', new Date(), 2, '', '');
     let project = new Project('Home Renovation', '', [mowTheLawn, paintDoors]);
     return project;
 }
+/*
+function displayProjects(projectArray) {
+    let element = '';
+    for (project in projectArray) {
+        element = toHTML(project);
+    }
+    document.querySelector('#project-container').appendChild(element);
+}
 
-const projects = [];
+function toHTML(project) {
+    let element = document.createElement();
+    element.innerHTML = `
+        <h2 class="project-title">${project.name}</h2>
+        <button>Hide Project</button>
+        <button>Remove Project</button> 
+    `;
+    return element;
+} */
 
 window.createDummyProject = createDummyProject;
 window.projectManager = ProjectManager;

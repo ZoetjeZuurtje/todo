@@ -6,7 +6,30 @@
     <title>Document</title>
 </head>
 <body>
-    <button>Create New Project</button>
-
+    <header id="header" class="flex">
+        <img src="" alt="ToDone">
+        <nav>
+            <a href="">About</a>
+            <a href="">Credits</a>
+            <a href="">More</a>
+        </nav>
+    </header>
+    <section id="sidebar">
+        <header><h1>Projects</h1><button>Add Project</button></header>
+        <div id="project-container">
+            <div class="project">
+                <h2>Mow the Lawn</h2>
+                <button>Hide</button>
+                <button>Remove</button>
+            </div>
+        </div>
+    </section>
+    <main>
+        <article class="project-card">
+            <h2 class="project-title">${project.name}</h2>
+            <button>Hide Project</button>
+            <button>Remove Project</button> 
+        </article>
+    </main>
 </body>
 </html>
