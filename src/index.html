@@ -25,10 +25,21 @@
         </div>
     </section>
     <main>
-        <article class="project-card">
-            <h2 class="project-title">${project.name}</h2>
-            <button>Hide Project</button>
-            <button>Remove Project</button> 
+        <article class="project-card resizeable" draggable="true">
+            <header>
+                <button class="project-drag-button">:::::</button>
+                <h2>Project Name</h2>
+            </header>
+            <ul class="content">
+                <li>Mow the lawn</li>
+                <li>Mow the lawn</li>
+                <li>Mow the lawn</li>
+                <li>Mow the lawn</li>
+            </ul>
+            <div class="flex flex-start">
+                <button>Hide Project</button>
+                <button>Remove Project</button> 
+            </div>
         </article>
     </main>
 </body>

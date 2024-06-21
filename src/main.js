@@ -1,4 +1,5 @@
 import './style.css';
+require('./components/project-card/project-card.js');
 
 class TodoItem {
     constructor(title, description, dueDate, priority, notes, checklist, id = Math.floor(Math.random() * 10000)) {

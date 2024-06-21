@@ -1,11 +1,29 @@
 .project-card {
+    position: absolute;
     display: inline-block;
     height: 300px;
     width: 200px;
+    display: grid;
+    grid-template-rows: 3rem 1fr 2rem;
     border-radius: 15px;
-    resize: both;
 }
 
 .project-card header {
-    
+    & h2 {
+        margin-top: 0;
+        text-align: center;
+    }
+    & button {
+        display: block;
+        margin: 0 auto;
+        border: none;
+        &:hover {
+            cursor: grab;
+        }
+    }
+}
+
+.project-card .content {
+    padding-left: 1rem;
+    overflow-y: scroll;
 }

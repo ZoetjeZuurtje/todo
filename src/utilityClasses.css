@@ -3,3 +3,12 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.flex-start {
+    justify-content: flex-start;
+}
+
+.resizeable {
+    overflow: hidden;
+    resize: both;
+}
