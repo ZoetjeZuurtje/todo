@@ -4,16 +4,16 @@ const clamp = (min, value, max) => Math.max(Math.min(max, value), min);
 
 const dropCard = (event) => {
     const cardArea = main.getBoundingClientRect();
+    const card = event.target.getBoundingClientRect();
 
-    const {height: cardHeight, width: cardWidth} = event.target.getBoundingClientRect();
-    const headerOffset = event.target.querySelector('.project-drag-button').getBoundingClientRect().height / 2;
-    const totalXOffset = cardArea.x + cardWidth / 2;
+    const headerOffset = 12; // Offset the card vertically so that the mouse cursor stays on the dragButton
+    const totalXOffset = cardArea.x + card.width / 2;
     const totalYOffset = cardArea.y + headerOffset;
 
-    // Prevent the card from being dropped to the left or above the `main` element
-    const newX = clamp(0, event.clientX - totalXOffset, cardArea.right - cardWidth - cardArea.x);
-    const newY = clamp(0, event.clientY - totalYOffset, cardArea.bottom - cardHeight - cardArea.y);
-    // Prevent the card from being dropped under or to the right of the `main` element
+    // Prevent the card from being dropped outside of the cardArea
+    const newX = clamp(0, event.clientX - totalXOffset, cardArea.right - cardArea.x - card.width);
+    const newY = clamp(0, event.clientY - totalYOffset, cardArea.bottom - cardArea.y - card.height);
+
     event.target.style.left = `${newX}px`;
     event.target.style.top  = `${newY}px`;
 }
