@@ -174,6 +174,7 @@ function createDummyProject() {
     let project = new Project('Home Renovation', '', [mowTheLawn, paintDoors]);
     return project;
 }
+export { createDummyProject };
 /*
 function displayProjects(projectArray) {
     let element = '';
@@ -182,18 +183,4 @@ function displayProjects(projectArray) {
     }
     document.querySelector('#project-container').appendChild(element);
 }
-
-function toHTML(project) {
-    let element = document.createElement();
-    element.innerHTML = `
-        <h2 class="project-title">${project.name}</h2>
-        <button>Hide Project</button>
-        <button>Remove Project</button> 
-    `;
-    return element;
-} */
-
-window.createDummyProject = createDummyProject;
-window.projectManager = ProjectManager;
-window.TodoItem = TodoItem;
-window.Project = Project;
+*/
