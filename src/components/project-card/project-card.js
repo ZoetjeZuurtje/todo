@@ -1,8 +1,4 @@
-import {createDummyProject} from '../../main.js';
-
-
 const main = document.querySelector('main');
-const addCardButton = document.querySelector('.project-visibility-toggle');
 
 const clamp = (min, value, max) => Math.max(Math.min(max, value), min);
 
@@ -29,58 +25,7 @@ const dragCard = (event) => {
     }
 }
 
-function createCard(project) {
-    
-    let todoItems = '';
-    for (let i = 0; i < project.todoList.length; i++) {
-        todoItems = todoItems.concat(`<li>${project.todoList[i].title}</li>`);
-    }
-
-
-    const HTML = `
-        <header>
-            <button class="project-drag-button">:::::</button>
-            <h2>${project.name}</h2>
-        </header>
-        <ul class="content">
-            ${todoItems}
-        </ul>
-        <div class="flex flex-start">
-            <button>Hide Project</button>
-            <button>Remove Project</button> 
-        </div>`;
-    let card = document.createElement('article');
-    card.classList.add('project-card', 'resizeable');
-    card.setAttribute('draggable', 'true');
-    card.innerHTML = HTML;
-
-    return card;
-}
-
-function addCard(project) {
-    const card = createCard(createDummyProject());
-    
-    card.addEventListener('dragend', dropCard);
-    card.addEventListener('dragstart', dragCard);
-
-    main.appendChild(card);
-}
-
-function toggleCardVisibility(event) {
-    if (event.target.dataset.isHidden === 'true') {
-        //let project = getProject();
-        event.target.textContent = 'Hide';
-        addCard(/*project*/);
-    } else {
-        // hideProject()
-        event.target.textContent = 'Show';
-    }
-
-    event.target.dataset.isHidden = event.target.dataset.isHidden === 'true' ? false : true;
-}
-
 const init = () => {
-    addCardButton.addEventListener('click', toggleCardVisibility);
     // Prevent the 'return animation' of the draggable object
     document.addEventListener('dragover', function(e) { e.preventDefault() });
     let cards = document.querySelectorAll('.project-card');
@@ -91,3 +36,5 @@ const init = () => {
 };
 
 init();
+
+export { dropCard, dragCard }

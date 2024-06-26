@@ -1,5 +1,6 @@
 import './style.css';
 require('./components/project-card/project-card.js');
+require('./projectsGUI.js');
 
 class TodoItem {
     constructor(title, description, dueDate, priority, notes, checklist, id = Math.floor(Math.random() * 10000)) {
@@ -50,9 +51,12 @@ class TodoItem {
 
 class Project {
     constructor(name, description, todoItems, sortingSetting = 'alphabet') {
+        let id = Math.floor(Math.random() * 1E6);
+
         this.todoList = todoItems;
         this.name = name;
         this.description = description;
+        this.id = '1';
 
         this.sortingSetting = sortingSetting;
     }
@@ -109,6 +113,15 @@ class ProjectManager {
         this.projects = projects;
     }
 
+    find(id) {
+        for (let i = 0; i < this.projects.length; i++) {
+            if (this.projects[i].id == id) {
+                return this.projects[i];
+            }
+        }
+        return false;
+    }
+
     add(project) {
         this.projects.push(project);
     }
@@ -128,6 +141,7 @@ class ProjectManager {
     load() {
         const STORAGE_KEY = 'projects';
         const json = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        if (json === null) return;
 
         this.clearProjects();
 
@@ -174,13 +188,5 @@ function createDummyProject() {
     let project = new Project('Home Renovation', '', [mowTheLawn, paintDoors]);
     return project;
 }
-export { createDummyProject };
-/*
-function displayProjects(projectArray) {
-    let element = '';
-    for (project in projectArray) {
-        element = toHTML(project);
-    }
-    document.querySelector('#project-container').appendChild(element);
-}
-*/
+
+window.ProjectManager = new ProjectManager([createDummyProject()]);
