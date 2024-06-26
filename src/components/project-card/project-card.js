@@ -76,7 +76,6 @@ function toggleCardVisibility(event) {
         event.target.textContent = 'Show';
     }
 
-    console.log(event.target.dataset.isHidden);
     event.target.dataset.isHidden = event.target.dataset.isHidden === 'true' ? false : true;
 }
 
