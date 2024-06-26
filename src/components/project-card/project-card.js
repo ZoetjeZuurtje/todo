@@ -25,6 +25,43 @@ const dragCard = (event) => {
     }
 }
 
+function createCard(project) {
+    
+    let todoItems = '';
+    for (let i = 0; i < project.todoList.length; i++) {
+        todoItems = todoItems.concat(`<li>${project.todoList[i].title}</li>`);
+    }
+
+    const HTML = `
+        <header>
+            <button class="project-drag-button">:::::</button>
+            <h2>${project.name}</h2>
+        </header>
+        <ul class="content">
+            ${todoItems}
+        </ul>
+        <div class="flex flex-start">
+            <button>Hide Project</button>
+            <button>Remove Project</button> 
+        </div>`;
+    let card = document.createElement('article');
+    card.classList.add('project-card', 'resizeable');
+    card.setAttribute('draggable', 'true');
+    card.dataset.projectId = project.id;
+    card.innerHTML = HTML;
+
+    return card;
+}
+
+function addCard(project) {
+    const card = createCard(project);
+    
+    card.addEventListener('dragend', dropCard);
+    card.addEventListener('dragstart', dragCard);
+
+    main.appendChild(card);
+}
+
 const init = () => {
     // Prevent the 'return animation' of the draggable object
     document.addEventListener('dragover', function(e) { e.preventDefault() });
@@ -37,4 +74,4 @@ const init = () => {
 
 init();
 
-export { dropCard, dragCard }
+export { addCard };
