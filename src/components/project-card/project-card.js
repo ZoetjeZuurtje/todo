@@ -25,6 +25,18 @@ const dragCard = (event) => {
     }
 }
 
+function removeCard(event) {
+    let targetElement = event.target;
+
+    // This loop is slow
+    // if performance becomes an issue, this should be changed
+    while (targetElement.tagName != 'ARTICLE') {
+        targetElement = targetElement.parentElement;
+    }
+
+    targetElement.remove();
+}
+
 function createCard(project) {
     
     let todoItems = '';
@@ -41,14 +53,17 @@ function createCard(project) {
             ${todoItems}
         </ul>
         <div class="project-card-buttons flex flex-end">
-            <button class="icon dangerous-button"><span class="material-symbols-outlined">close</span></button>
+            <button class="icon dangerous-button hide-card"><span class="material-symbols-outlined">close</span></button>
         </div>`;
+
     let card = document.createElement('article');
     card.classList.add('project-card', 'resizeable');
     card.setAttribute('draggable', 'true');
     card.dataset.projectId = project.id;
     card.innerHTML = HTML;
 
+    // Make the buttons function
+    card.querySelector('button.hide-card').addEventListener('click', removeCard);
     return card;
 }
 

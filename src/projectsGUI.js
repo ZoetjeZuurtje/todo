@@ -1,8 +1,8 @@
-import { addCard } from './components/project-card/project-card.js';
+import { addCard, removeCard } from './components/project-card/project-card.js';
 
 const addCardButton = document.querySelectorAll('.project-visibility-toggle');
 
-function removeCard(id) {
+function removeCardById(id) {
     const projectCards = document.querySelectorAll('main > .project-card');
     for (let i = 0; i < projectCards.length; i++) {
         if (projectCards[i].dataset.projectId == id) {
