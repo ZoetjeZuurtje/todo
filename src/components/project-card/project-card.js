@@ -88,4 +88,4 @@ const init = () => {
 
 init();
 
-export { addCard };
+export { addCard, removeCard };
