@@ -3,11 +3,11 @@
 @import './utilityClasses.css';
 
 :root {
-    --primary-color: black;
-}
-
-* {
-    background-color: rgba(0, 0, 0, 0.1);
+    --primary-color: white;
+    --secondary-color: lightblue;
+    --accent: rgb(0, 119, 255);
+    --text: black;
+    --danger: rgb(231, 75, 75);
 }
 
 body {
@@ -18,8 +18,25 @@ body {
 
 #header {
     padding: 10px;
+    background-color: var(--secondary-color);
+    border-bottom: solid 2px var(--accent);
+}
+
+#sidebar {
+    background-color: var(--secondary-color);
 }
 
 main {
     position: relative;
+    background-color: var(--primary-color);
+}
+
+button.icon {
+    aspect-ratio: 1 / 1;
+    border-radius: 15px;
+    border: none;
+}
+
+button:hover {
+    cursor: pointer;
 }

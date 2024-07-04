@@ -40,9 +40,8 @@ function createCard(project) {
         <ul class="content">
             ${todoItems}
         </ul>
-        <div class="flex flex-start">
-            <button>Hide Project</button>
-            <button>Remove Project</button> 
+        <div class="project-card-buttons flex flex-end">
+            <button class="icon dangerous-button"><span class="material-symbols-outlined">close</span></button>
         </div>`;
     let card = document.createElement('article');
     card.classList.add('project-card', 'resizeable');

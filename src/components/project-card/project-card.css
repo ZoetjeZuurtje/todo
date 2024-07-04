@@ -1,22 +1,28 @@
 .project-card {
+    display: flex;
+    flex-direction: column;
+
     position: absolute;
-    display: inline-block;
     height: 300px;
-    width: 200px;
-    display: grid;
-    grid-template-rows: 3rem 1fr 2rem;
+    width: fit-content;
     border-radius: 15px;
+
+    background-color: var(--secondary-color);
 }
 
 .project-card header {
+    height: fit-content;
+
     & h2 {
-        margin-top: 0;
+        margin: 0;
         text-align: center;
     }
+
     & button {
         display: block;
         margin: 0 auto;
         border: none;
+
         &:hover {
             cursor: grab;
         }
@@ -26,4 +32,16 @@
 .project-card .content {
     padding-left: 1rem;
     overflow-y: scroll;
+
+    flex: auto;
+}
+
+.project-card header,
+.project-card header button {
+    background-color: var(--accent);
+    color: var(--primary-color);
+}
+
+.project-card-buttons {
+    padding: 1rem;
 }

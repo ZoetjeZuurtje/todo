@@ -4,11 +4,17 @@
     align-items: center;
 }
 
-.flex-start {
-    justify-content: flex-start;
+.flex-end {
+    justify-content: flex-end;
 }
 
 .resizeable {
     overflow: hidden;
     resize: both;
+}
+
+.dangerous-button {
+    padding: 0.5rem;
+    background-color: var(--danger);
+    color: var(--primary-color);
 }
