@@ -19,7 +19,7 @@ class ProjectManager {
                 return this.projects[i];
             }
         }
-        return false;
+        throw new Error('Project not found');
     }
 
     add(project) {

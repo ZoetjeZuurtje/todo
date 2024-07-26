@@ -9,4 +9,4 @@ require('./projectManager.js');
 require('./project.js');
 
 let pm = new ProjectManager();
-let pmgui = new ProjectManagerGUI(pm);
+let _ = new ProjectManagerGUI(pm);
