@@ -34,7 +34,8 @@ function removeCard(event) {
         targetElement = targetElement.parentElement;
     }
 
-    targetElement.remove();
+    let projectId = targetElement.dataset.projectId;
+    window.projectManagerGUI.hideCardById(projectId);
 }
 
 function createCard(project) {

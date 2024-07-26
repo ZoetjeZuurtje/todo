@@ -10,9 +10,12 @@ class ProjectManagerGUI {
     }
 
     hideCardById(id) {
-        const projectCards = document.querySelectorAll('main > .project-card');
-        const project = projectCards.filter(element => element.dataset.projectId == id);
-        project[0].remove();
+        const project = document.querySelector(`article[data-project-id="${id}"]`);
+        project.remove();
+
+        let toggleBtn = document.querySelector(`div[data-project-id="${id}"] .project-visibility-toggle`);
+        toggleBtn.textContent = 'Show';
+        this.toggleDataIsHidden(toggleBtn);
     }
 
     toggleCardVisibility = (event) => {
@@ -26,12 +29,10 @@ class ProjectManagerGUI {
             const project = this.projectManager.find(projectId);
             addCard(project);
             toggleButton.textContent = 'Hide';
+            this.toggleDataIsHidden(toggleButton);
         } else {
             this.hideCardById(projectId);
-            toggleButton.textContent = 'Show';
-        }
-        
-        this.toggleDataIsHidden(toggleButton);
+        }        
     }
 
     removeProject(event) {
