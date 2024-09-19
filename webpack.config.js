@@ -9,7 +9,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
   plugins: [
 
     new HtmlWebpackPlugin({
-      title: 'Restaurant Page',
+      title: 'Todo',
       template: 'src/index.html',
     }),
     new MiniCssExtractPlugin(),

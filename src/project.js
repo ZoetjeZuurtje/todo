@@ -1,5 +1,5 @@
 class Project {
-    constructor(name, description, todoItems, sortingSetting = 'alphabet') {
+    constructor(name, description, todoItems, sortingSetting = 'priority') {
         let id = Math.floor(Math.random() * 1E6);
 
         this.todoList = todoItems;

@@ -5,16 +5,16 @@ import { addProjectElement } from './components/sidebar-item/sidebar-item.js';
 class ProjectManagerGUI {
     constructor(projectManager) {
         this.projectManager = projectManager;
-        
         this.setup();
     }
 
     hideCardById(id) {
         const project = document.querySelector(`article[data-project-id="${id}"]`);
+        if (project === null) return;
         project.remove();
 
         let toggleBtn = document.querySelector(`div[data-project-id="${id}"] .project-visibility-toggle`);
-        toggleBtn.textContent = 'Show';
+        toggleBtn.textContent = toggleBtn.textContent == 'Show' ? 'Hide' : 'Show';
         this.toggleDataIsHidden(toggleBtn);
     }
 
@@ -25,7 +25,6 @@ class ProjectManagerGUI {
         const projectId = toggleButton.parentElement.dataset.projectId;
         
         if (toggleButton.dataset.isHidden === 'true') {
-            console.log(this.projectManager);
             const project = this.projectManager.find(projectId);
             addCard(project);
             toggleButton.textContent = 'Hide';
@@ -35,20 +34,13 @@ class ProjectManagerGUI {
         }        
     }
 
-    removeProject(event) {
-        let id = event.parentElement.dataset.projectId;
+    removeProject = (event) => {
+        let id = event.target.parentElement.dataset.projectId;
+        let projectElement = document.querySelector(`div[data-project-id="${id}"]`); // Project in the sidebar
 
-        this.projectManager.removeProject(id);
-        this.displayProjects();
-    }
-
-    displayProjects() {
-        const projectContainer = document.querySelector('#project-container');
-        let documentFragment = new DocumentFragment();
-
-        for (project in this.projectManager.projects) {
-            
-        }
+        this.projectManager.remove(+id);
+        this.hideCardById(id);
+        projectElement.remove();
     }
     
     toggleDataIsHidden(element) {
@@ -76,12 +68,17 @@ class ProjectManagerGUI {
     
     setup() {
         this.loadProjects();
-
+        
+        const closeModalButton = document.querySelector('dialog');
         const addCardButtons = document.querySelectorAll('.project-visibility-toggle');
         const deleteProjectButtons = document.querySelectorAll('.project-delete-button');
+        const addProjectButton = document.querySelector('#add-project-button');
+        const addProjectDialog = document.querySelector('#add-project-dialog');
 
         addCardButtons.forEach(projectElement => projectElement.addEventListener('click', this.toggleCardVisibility));
         deleteProjectButtons.forEach(button => button.addEventListener('click', this.removeProject));
+        addProjectButton.addEventListener('click', () => { addProjectDialog.showModal() });
+        closeModalButton.addEventListener('click', () => { addProjectDialog.close() });
     }
 }
 

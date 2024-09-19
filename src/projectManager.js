@@ -24,6 +24,8 @@ class ProjectManager {
 
     add(project) {
         this.projects.push(project);
+        
+        this.save();
     }
 
     remove(id) {
@@ -34,6 +36,8 @@ class ProjectManager {
         const secondHalf = this.projects.splice(index + 1);
         
         this.projects = [].concat(firstHalf, secondHalf);
+        
+        this.save();
     }
 
     getIndex(id) {
@@ -71,7 +75,6 @@ class ProjectManager {
     }
 
     loadProject(json) {
-        console.log(json);
         let todoList = [];
         for (let jsonTodo in json.todoList) {
             const todo = new TodoItem(

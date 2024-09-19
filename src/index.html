@@ -7,6 +7,19 @@
     <title>Document</title>
 </head>
 <body>
+    <dialog id="add-project-dialog">
+        <input type="text" id="project-name" placeholder="Project name goes here...">
+        <textarea id="project-description">Please enter your description here...</textarea>
+        todoItems:
+        <button>Add todo item</button>
+        <ul>
+            <li>Item <button>Remove()</button></li>
+        </ul>
+        <div>
+            <button onclick="">Cancel</button>
+            <button>Confirm</button>
+        </div>
+    </dialog>
     <header id="header" class="flex">
         <img src="" alt="ToDone">
         <nav>
@@ -16,13 +29,8 @@
         </nav>
     </header>
     <section id="sidebar">
-        <header><h1>Projects</h1><button>Add Project</button></header>
+        <header><h1>Projects</h1><button id="add-project-button">Add Project</button></header>
         <div id="project-container">
-            <div class="project" data-project-id="1">
-                <h2>Mow the Lawn</h2>
-                <button class="project-visibility-toggle" data-is-hidden="true">Show</button>
-                <button class="project-delete-button">Remove</button>
-            </div>
         </div>
     </section>
     <main>
