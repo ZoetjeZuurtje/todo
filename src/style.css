@@ -3,6 +3,7 @@
 @import './components/todoItem/todoItem.css';
 @import './layout.css';
 @import './utilityClasses.css';
+@import './dialog.css';
 
 :root {
     --primary-color: white;

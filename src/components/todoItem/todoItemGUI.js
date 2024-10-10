@@ -14,6 +14,16 @@ function changePriority(event) {
   button.dataset.priority = priorityMap[priority];
 }
 
+function removeTodoElement(event) {
+  let currentElement = event.target;
+
+  while (!currentElement.classList.contains('todo-item')) {
+    currentElement = currentElement.parentElement;
+  }
+
+  currentElement.remove();
+}
+
 function returnSidebar() {
   let sidebar = document.createElement('div')
   let removeButton = document.createElement('button');
@@ -22,6 +32,7 @@ function returnSidebar() {
   sidebar.classList.add('todo-item-sidebar');
   removeButton.classList.add('dangerous-button', 'remove');
   removeButton.innerText = 'x';
+  removeButton.addEventListener('click', removeTodoElement);
   priorityBar.classList.add('priority', 'low-priority');
   priorityBar.dataset.priority = 'low';
   priorityBar.addEventListener('click', changePriority);
@@ -82,7 +93,6 @@ function addTodoElement() {
 }
 
 function setup() {
-  // priorityButtons.forEach(button => button.addEventListener("click", changePriority));
   document.querySelector('#add-todo-btn').addEventListener('click', addTodoElement);
 }
 
