@@ -3,101 +3,91 @@ dialog {
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
-    
+
     padding: 0;
     height: 40%;
-    width: 80%;
+    width: 60%;
     border-radius: 10px;
-    
+
     z-index: -1;
+
     &[open] {
         z-index: 1;
     }
-  }
-  
-  .dialog-header {
+}
+
+.dialog-header {
     display: flex;
     justify-content: space-between;
     border-bottom: solid black 3px;
-    
+
     & input {
-      font-size: 24px;
-      border: none;
-      width: 100%;
+        font-size: 24px;
+        border: none;
+        width: 100%;
     }
-  }
-  
-  dialog .container {
+}
+
+dialog .container {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     height: 70%;
-    
+
     --paddingSize: 2rem;
     padding: var(--paddingSize);
     gap: var(--paddingSize);
     flex-grow: 1;
-    
+
     & > * {
-      border-radius: 5px;
+        border-radius: 5px;
     }
-  }
-  
-  .tasklist-container {
-    width: 60%;
+}
+
+.tasklist-container {
+    width: 350px;
     min-height: 40%;
-    flex-grow: 2;
+    flex: 1 0 auto;
     border: solid 2px black;
     display: flex;
     flex-direction: column;
-  }
-  
-  .tasklist-header {
+}
+
+.tasklist-header {
     border-bottom: solid 2px black;
-    
+
     & > button {
-      border: none;
-      border-right: solid 2px black;
+        border: none;
+        border-right: solid 2px black;
     }
-  }
-  
-  .project-todos {
+}
+
+.project-todos {
     flex: 1 1 100px;
     padding: 10px;
     overflow-y: scroll;
-  }
-  
-  .project-description {
-    flex-grow: 1;
+}
+
+.project-todos > * + * {
+    margin-top: 10px;
+}
+
+.project-description {
+    flex: 1 0 auto;
+    width: 250px;
     resize: none;
-    
-    min-width: 200px;
-  }
-  
-  .cancel {
+}
+
+.cancel {
     border: none;
     border-left: solid black 3px;
-  }
-  
-  .confirm {
+}
+
+.confirm {
     width: 100%;
     height: 60px;
     font-size: 24px;
-    
+
     border: none;
     border-top: solid black 3px;
-  }
-  
-  
-  
-  
-  
-  
-  .dummy {
-    width: 100%;
-    height: 100px;
-    background-color: lightblue;
-  }
-  .dummy + .dummy {
-    margin-top: 10px;
-  }
+}
