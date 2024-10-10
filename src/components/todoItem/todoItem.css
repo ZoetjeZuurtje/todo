@@ -1,0 +1,103 @@
+.todo-item {
+    width: 400px;
+    height: 80px;
+    display: flex;
+}
+
+
+/* Todo Content area */
+.todo-item-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    border: solid black 2px;
+    border-right: none;
+}
+
+/* Title & Date picker */
+.todo-item-content div {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.todo-item-content div input[type="text"] {
+    margin-top: 0;
+    font-size: 24px;
+    width: 50%;
+    border: none;
+    /* background-color: rgba(0, 0, 0, 0.1); */
+}
+
+.todo-item-content div input[type="date"] {
+    margin-left: 10px;
+    position: relative;
+    border: none;
+}
+
+.todo-item-content div input::-webkit-datetime-edit-fields-wrapper {
+    position: relative;
+    left: 15%;
+}
+
+.todo-item-content div input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    left: 0%;
+}
+
+/* Description */
+.todo-item-content details {
+    height: 1em;
+    padding-left: 5px;
+}
+
+.todo-item-content textarea {
+    position: relative;
+    top: 3px;
+}
+
+/* Todo Item Sidebar */
+.todo-item-sidebar {
+    width: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.todo-item-sidebar button {
+    border-radius: 0;
+}
+
+/* Remove Todo Button */
+.todo-item-sidebar .remove {
+    height: 25px;
+    width: 25px;
+    padding: 0;
+}
+
+/* Priority Button */
+.todo-item-sidebar .priority {
+    flex-grow: 1;
+    border-top: 0;
+}
+
+.low-priority {
+    background-image: linear-gradient(transparent 33%,
+            transparent 66%,
+            yellow 34%);
+}
+
+.medium-priority {
+    background-image: linear-gradient(transparent 33%,
+            orange 33%,
+            orange 66%,
+            yellow 34%);
+}
+
+.high-priority {
+    background-image: linear-gradient(red 33%,
+            orange 33%,
+            orange 66%,
+            yellow 34%);
+}

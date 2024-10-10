@@ -8,16 +8,26 @@
 </head>
 <body>
     <dialog id="add-project-dialog">
-        <input type="text" id="project-name" placeholder="Project name goes here...">
-        <textarea id="project-description">Please enter your description here...</textarea>
+        <input type="text" class="project-name" placeholder="Project name goes here...">
+        <input class="project-description">Please enter your description here...</input>
         todoItems:
-        <button>Add todo item</button>
-        <ul>
-            <li>Item <button>Remove()</button></li>
+        <button id="add-todo-btn">Add todo item</button>
+        <ul class="project-todos">
+            <li class="todo">
+                <div>
+                    <h1>Todo Title</h1>
+                    <p>Todo description</p>
+                </div>
+                <div>
+                    <input type="date">
+                    <button class="remove dangerous-button">x</button>
+                </div>
+                <button class="priority-toggle" data-priority="0"></button>
+            </li>
         </ul>
         <div>
-            <button onclick="">Cancel</button>
-            <button>Confirm</button>
+            <button class="cancel dangerous-button">Cancel</button>
+            <button class="confirm">Confirm</button>
         </div>
     </dialog>
     <header id="header" class="flex">

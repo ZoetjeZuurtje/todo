@@ -1,4 +1,4 @@
-import TodoItem from "./todo";
+import TodoItem from "./todoItem";
 import Project from "./project";
 
 

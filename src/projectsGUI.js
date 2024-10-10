@@ -65,20 +65,36 @@ class ProjectManagerGUI {
 
         projectContainer.appendChild(documentFragment);
     }
+
+    getModalData() {
+        const modal = document.querySelector('#add-project-dialog');
+        const name = modal.querySelector('.project-name').value;
+        const desc = modal.querySelector('.project-description').value;
+        const todos = modal.querySelectorAll('.project-todos .todo');
+
+        console.log(`
+            name: ${name},
+            description: ${desc},
+            todo items: ${todos}
+            `);
+            console.log(todos);
+    }
     
     setup() {
         this.loadProjects();
         
-        const closeModalButton = document.querySelector('dialog');
+        const modalCancelButton = document.querySelector('dialog .cancel');
+        const modalConfirmButton = document.querySelector('dialog .confirm');
+        const modalShowDialogButton = document.querySelector('#add-project-button');
+        const addProjectDialog = document.querySelector('#add-project-dialog');
         const addCardButtons = document.querySelectorAll('.project-visibility-toggle');
         const deleteProjectButtons = document.querySelectorAll('.project-delete-button');
-        const addProjectButton = document.querySelector('#add-project-button');
-        const addProjectDialog = document.querySelector('#add-project-dialog');
 
         addCardButtons.forEach(projectElement => projectElement.addEventListener('click', this.toggleCardVisibility));
         deleteProjectButtons.forEach(button => button.addEventListener('click', this.removeProject));
-        addProjectButton.addEventListener('click', () => { addProjectDialog.showModal() });
-        closeModalButton.addEventListener('click', () => { addProjectDialog.close() });
+        modalShowDialogButton.addEventListener('click', () => { addProjectDialog.showModal() });
+        modalCancelButton.addEventListener('click', () => { addProjectDialog.close() });
+        modalConfirmButton.addEventListener('click', this.getModalData);
     }
 }
 

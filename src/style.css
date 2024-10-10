@@ -1,4 +1,6 @@
 @import './components/project-card/project-card.css';
+@import './components/sidebar-item/sidebar-item.css';
+@import './components/todoItem/todoItem.css';
 @import './layout.css';
 @import './utilityClasses.css';
 

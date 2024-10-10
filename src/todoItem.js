@@ -1,13 +1,11 @@
 
 class TodoItem {
-    constructor(title, description, dueDate, priority, notes, checklist, id = Math.floor(Math.random() * 10000)) {
-        this.title = title;
-        this.description = description;
+    constructor(title, description, dueDate, priority, id = Math.floor(Math.random() * 10000)) {
+        this.title = title; // string
+        this.description = description; /// string
         this.dueDate = dueDate;
         this.priority = priority;
-        this.notes = notes;
-        this.checklist = checklist;
-        this.id = id;
+        this.id = id; // int
     }
 
     editDescription(description) {
@@ -15,18 +13,20 @@ class TodoItem {
     }
 
     toggleCompleted() {
-        this.completed = this.completed ? false : true;
+        this.completed = !this.completed;
     }
 
     increasePriority() {
-        this.priority = + 1;
+        this.priority += 1;
     }
 
     decreasePriority() {
-        this.priority = - 1;
+        this.priority -= 1;
     }
 
-    isCompleted = () => !this.checklist.filter(goal => goal != 'not done');
+    // isCompleted = () => !this.checklist.filter(goal => goal != 'not done');
+
+    isCompleted = () => this.checklist.every(item => item == 'done');
 
     isDue() {
         const now = new Date().now();
@@ -39,8 +39,6 @@ class TodoItem {
             description: this.description,
             dueDate: this.dueDate,
             priority: this.priority,
-            notes: this.notes,
-            checklist: this.checklist,
             id: this.id
         }
     }
