@@ -2,10 +2,19 @@
     --low-priority: yellow;
     --medium-priority: orange;
     --high-priority: red;
+    --border-radius: 10px;
 
-    width: 100%;
+    position: relative;
+    width: calc(100% - 45px);
     height: 80px;
     display: flex;
+    padding: 10px 35px 10px 10px;
+    border-radius: var(--border-radius);
+    background-color: rgba(var(--secondary-color), 1);
+
+    & * {
+        background-color: transparent;
+    }
 }
 
 
@@ -15,16 +24,13 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-    border: solid black 2px;
-    border-right: none;
 }
 
-/* Title & Date picker */
+/* functions as 'header', so to speak */
 .todo-item-content div {
     display: flex;
     justify-content: space-between;
-    align-items: start;
+    align-items: center;
 }
 
 .todo-item-content div input[type="text"] {
@@ -32,7 +38,7 @@
     font-size: 24px;
     width: 50%;
     border: none;
-    /* background-color: rgba(0, 0, 0, 0.1); */
+    color: rgb(var(--text));
 }
 
 .todo-item-content div input[type="date"] {
@@ -51,6 +57,15 @@
     left: 0%;
 }
 
+/* Remove Todo Button */
+.todo-item .remove {
+    height: 25px;
+    width: 25px;
+    padding: 0;
+    border-radius: 50%;
+    border: none;
+}
+
 /* Description */
 .todo-item-content details {
     height: 1em;
@@ -58,57 +73,40 @@
 }
 
 .todo-item-content textarea {
-    position: relative;
-    top: 3px;
+    position: absolute; /* Relative positioning does not work across browsers */
+    bottom: -5px;
+    transform: translateY(100%);
     z-index: 2;
+    border-radius: 5px;
 }
 
-/* Todo Item Sidebar */
-.todo-item-sidebar {
-    width: 25px;
-    display: flex;
-    flex-direction: column;
-}
-
-.todo-item-sidebar button {
-    border-radius: 0;
-}
-
-/* Remove Todo Button */
-.todo-item-sidebar .remove {
-    height: 25px;
-    width: 25px;
-    padding: 0;
-}
-
-/* Priority Button */
-.todo-item-sidebar .priority {
-    flex-grow: 1;
-    border-top: 0;
+.todo-item button.priority {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 20px;
+    height: 100%;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    border: none;
+    border-left: 3px solid rgb(var(--accent));
 }
 
 .low-priority {
-    background-image: linear-gradient(
-        transparent 33%,
-        transparent 66%,
-        var(--low-priority) 34%
-    );
+    background-image: linear-gradient(transparent 33%,
+            transparent 66%,
+            var(--low-priority) 34%);
 }
 
 .medium-priority {
-    background-image: linear-gradient(
-        transparent 33%,
-        var(--medium-priority) 33%,
-        var(--medium-priority) 66%,
-        var(--low-priority) 34%
-    );
+    background-image: linear-gradient(transparent 33%,
+            var(--medium-priority) 33%,
+            var(--medium-priority) 66%,
+            var(--low-priority) 34%);
 }
 
 .high-priority {
-    background-image: linear-gradient(
-        var(--high-priority) 33%,
-        var(--medium-priority) 33%,
-        var(--medium-priority) 66%,
-        var(--low-priority) 34%
-    );
+    background-image: linear-gradient(var(--high-priority) 33%,
+            var(--medium-priority) 33%,
+            var(--medium-priority) 66%,
+            var(--low-priority) 34%);
 }

@@ -2,12 +2,14 @@ dialog {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    --dialog-border-color: rgb(var(--secondary-color));
     overflow: hidden;
 
     padding: 0;
     height: 40%;
     width: 60%;
     border-radius: 10px;
+    border-color: var(--dialog-border-color);
 
     z-index: -1;
 
@@ -19,7 +21,7 @@ dialog {
 .dialog-header {
     display: flex;
     justify-content: space-between;
-    border-bottom: solid black 3px;
+    border-bottom: solid rgb(var(--secondary-color)) 3px;
 
     & input {
         font-size: 24px;
@@ -48,7 +50,7 @@ dialog .container {
     width: 350px;
     min-height: 40%;
     flex: 1 0 auto;
-    border: solid 2px black;
+    border: solid 2px var(--dialog-border-color);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -56,14 +58,14 @@ dialog .container {
 
 .tasklist-header {
     overflow: hidden;
-    border-bottom: solid 2px black;
+    border-bottom: solid 2px var(--dialog-border-color);
 
     & > button {
-        background-color: var(--positive-green);
+        background-color: rgb(var(--positive-green));
         height: 110%;
 
         border: none;
-        border-right: solid 2px black;
+        border-right: solid 2px var(--dialog-border-color);
     }
 }
 
@@ -81,11 +83,12 @@ dialog .container {
     flex: 1 0 auto;
     width: 250px;
     resize: none;
+    border: solid 2px var(--dialog-border-color);
 }
 
 .cancel {
     border: none;
-    border-left: solid black 3px;
+    border-left: solid var(--dialog-border-color) 3px;
 }
 
 .confirm {
@@ -94,5 +97,5 @@ dialog .container {
     font-size: 24px;
 
     border: none;
-    border-top: solid black 3px;
+    background-color: rgb(var(--secondary-color));
 }

@@ -6,12 +6,12 @@
 @import './dialog.css';
 
 :root {
-    --primary-color: white;
-    --secondary-color: lightblue;
-    --accent: rgb(0, 119, 255);
-    --text: black;
-    --danger: rgb(231, 75, 75);
-    --positive-green: rgb(124, 244, 151);
+    --primary-color: 255, 255, 255;
+    --secondary-color: 173, 216, 230;
+    --accent: 0, 119, 255;
+    --text: 0, 0, 0;
+    --danger: 231, 75, 75;
+    --positive-green: 124, 244, 151;
 }
 
 body {
@@ -22,17 +22,17 @@ body {
 
 #header {
     padding: 10px;
-    background-color: var(--secondary-color);
-    border-bottom: solid 2px var(--accent);
+    background-color: rgb(var(--secondary-color));
+    border-bottom: solid 2px rgb(var(--accent));
 }
 
 #sidebar {
-    background-color: var(--secondary-color);
+    background-color: rgb(var(--secondary-color));
 }
 
 main {
     position: relative;
-    background-color: var(--primary-color);
+    background-color: rgb(var(--primary-color));
 }
 
 button.icon {

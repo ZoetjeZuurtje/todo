@@ -7,7 +7,7 @@
     width: fit-content;
     border-radius: 15px;
 
-    background-color: var(--secondary-color);
+    background-color: rgb(var(--secondary-color));
 }
 
 .project-card header {
@@ -38,8 +38,8 @@
 
 .project-card header,
 .project-card header button {
-    background-color: var(--accent);
-    color: var(--primary-color);
+    background-color: rgb(var(--accent));
+    color: rgb(var(--primary-color));
 }
 
 .project-card-buttons {

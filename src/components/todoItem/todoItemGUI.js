@@ -24,37 +24,35 @@ function removeTodoElement(event) {
   currentElement.remove();
 }
 
-function returnSidebar() {
-  let sidebar = document.createElement('div')
-  let removeButton = document.createElement('button');
+function returnPriorityBar() {
   let priorityBar = document.createElement('button');
-  
-  sidebar.classList.add('todo-item-sidebar');
-  removeButton.classList.add('dangerous-button', 'remove');
-  removeButton.innerText = 'x';
-  removeButton.addEventListener('click', removeTodoElement);
   priorityBar.classList.add('priority', 'low-priority');
   priorityBar.dataset.priority = 'low';
   priorityBar.addEventListener('click', changePriority);
 
-  sidebar.appendChild(removeButton);
-  sidebar.appendChild(priorityBar);
-
-  return sidebar;
+  return priorityBar;
 }
 
 function returnContent() {
   let content = document.createElement('div');
   content.classList.add('todo-item-content');
 
-  let titleAndDate = document.createElement('div');
+
+  let removeButton = document.createElement('button');
+  removeButton.classList.add('dangerous-button', 'remove');
+  removeButton.innerText = '🗑';
+  removeButton.addEventListener('click', removeTodoElement);
+  
+
+  let contentHeader = document.createElement('div');
   let title = document.createElement('input');
   let date = document.createElement('input');
   title.setAttribute('type', 'text');
   title.setAttribute('placeholder', 'Placeholder Title');
   date.setAttribute('type', 'date');
-  titleAndDate.appendChild(title);
-  titleAndDate.appendChild(date);
+  contentHeader.appendChild(title);
+  contentHeader.appendChild(date);
+  contentHeader.appendChild(removeButton);
 
   let details = document.createElement('details');
   details.classList.add('todo-description');
@@ -66,7 +64,7 @@ function returnContent() {
   details.appendChild(summary);
   details.appendChild(textarea);
 
-  content.appendChild(titleAndDate);
+  content.appendChild(contentHeader);
   content.appendChild(details);
 
   return content;
@@ -74,12 +72,12 @@ function returnContent() {
 
 function returnTodoElement() {
   let frag = new DocumentFragment();
-  let sidebar = returnSidebar();
+  let priorityBar = returnPriorityBar();
   let content = returnContent();
 
   let wrapper = document.createElement('div');
   wrapper.classList.add('todo-item');
-  wrapper.append(content, sidebar);
+  wrapper.append(content, priorityBar);
 
   frag.appendChild(wrapper);
 

@@ -15,6 +15,6 @@
 
 .dangerous-button {
     padding: 0.5rem;
-    background-color: var(--danger);
-    color: var(--primary-color);
+    background-color: rgb(var(--danger));
+    color: rgb(var(--primary-color));
 }
