@@ -1,5 +1,6 @@
 import { addCard } from './components/project-card/project-card.js';
 import { addProjectElement } from './components/sidebar-item/sidebar-item.js';
+import getProjectFromDialog from './components/dialog/dialog.js';
 
 
 class ProjectManagerGUI {
@@ -16,6 +17,21 @@ class ProjectManagerGUI {
         let toggleBtn = document.querySelector(`div[data-project-id="${id}"] .project-visibility-toggle`);
         toggleBtn.textContent = toggleBtn.textContent == 'Show' ? 'Hide' : 'Show';
         this.toggleDataIsHidden(toggleBtn);
+    }
+
+    addProject(project) {
+        const projectContainer = document.querySelector('#project-container');
+        this.projectManager.add(project);
+        let element = addProjectElement(project);
+
+        element
+            .querySelector('.project-visibility-toggle')
+            .addEventListener('click', this.toggleCardVisibility);
+        element
+            .querySelector('.project-delete-button')
+            .addEventListener('click', this.removeProject);
+
+        projectContainer.appendChild(element);
     }
 
     toggleCardVisibility = (event) => {
@@ -89,12 +105,18 @@ class ProjectManagerGUI {
         const addProjectDialog = document.querySelector('#add-project-dialog');
         const addCardButtons = document.querySelectorAll('.project-visibility-toggle');
         const deleteProjectButtons = document.querySelectorAll('.project-delete-button');
+        const dialogConfirmButton = document.querySelector('dialog button.confirm');
 
         addCardButtons.forEach(projectElement => projectElement.addEventListener('click', this.toggleCardVisibility));
         deleteProjectButtons.forEach(button => button.addEventListener('click', this.removeProject));
         modalShowDialogButton.addEventListener('click', () => { addProjectDialog.showModal() });
         modalCancelButton.addEventListener('click', () => { addProjectDialog.close() });
         modalConfirmButton.addEventListener('click', this.getModalData);
+        dialogConfirmButton.addEventListener('click', event => {
+            let project = getProjectFromDialog(event);
+            this.addProject(project);
+            addProjectDialog.close();
+        });
     }
 }
 
