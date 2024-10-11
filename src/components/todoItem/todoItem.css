@@ -1,4 +1,8 @@
 .todo-item {
+    --low-priority: yellow;
+    --medium-priority: orange;
+    --high-priority: red;
+
     width: 100%;
     height: 80px;
     display: flex;
@@ -84,21 +88,27 @@
 }
 
 .low-priority {
-    background-image: linear-gradient(transparent 33%,
-            transparent 66%,
-            yellow 34%);
+    background-image: linear-gradient(
+        transparent 33%,
+        transparent 66%,
+        var(--low-priority) 34%
+    );
 }
 
 .medium-priority {
-    background-image: linear-gradient(transparent 33%,
-            orange 33%,
-            orange 66%,
-            yellow 34%);
+    background-image: linear-gradient(
+        transparent 33%,
+        var(--medium-priority) 33%,
+        var(--medium-priority) 66%,
+        var(--low-priority) 34%
+    );
 }
 
 .high-priority {
-    background-image: linear-gradient(red 33%,
-            orange 33%,
-            orange 66%,
-            yellow 34%);
+    background-image: linear-gradient(
+        var(--high-priority) 33%,
+        var(--medium-priority) 33%,
+        var(--medium-priority) 66%,
+        var(--low-priority) 34%
+    );
 }

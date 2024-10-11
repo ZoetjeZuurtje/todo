@@ -90,6 +90,9 @@ function addTodoElement() {
   const todoList = document.querySelector('#add-project-dialog .project-todos');
 
   todoList.appendChild(returnTodoElement());
+
+  // Give focus to the title, so that the user is prompted to immediately enter one.
+  todoList.lastChild.querySelector('input[type="text"]').focus();
 }
 
 function setup() {

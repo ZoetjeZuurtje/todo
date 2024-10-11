@@ -51,12 +51,17 @@ dialog .container {
     border: solid 2px black;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .tasklist-header {
+    overflow: hidden;
     border-bottom: solid 2px black;
 
     & > button {
+        background-color: var(--positive-green);
+        height: 110%;
+
         border: none;
         border-right: solid 2px black;
     }
