@@ -1,102 +1,102 @@
 dialog {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    --dialog-border-color: rgb(var(--secondary-color));
-    overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  --dialog-border-color: rgb(var(--secondary-color));
+  overflow: hidden;
 
-    padding: 0;
-    height: 40%;
-    width: 60%;
-    border-radius: 10px;
-    border-color: var(--dialog-border-color);
+  padding: 0;
+  /* height: 40%; */
+  width: 60%;
+  border-radius: 10px;
+  border-color: var(--dialog-border-color);
 
-    z-index: -1;
+  z-index: -1;
 
-    &[open] {
-        z-index: 1;
-    }
+  &[open] {
+    z-index: 1;
+  }
 }
 
 .dialog-header {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: solid rgb(var(--secondary-color)) 3px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid rgb(var(--secondary-color)) 3px;
 
-    & input {
-        font-size: 24px;
-        border: none;
-        width: 100%;
-    }
+  & input {
+    font-size: 24px;
+    border: none;
+    width: 100%;
+  }
 }
 
 dialog .container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    height: 70%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  height: 70%;
 
-    --paddingSize: 2rem;
-    padding: var(--paddingSize);
-    gap: var(--paddingSize);
-    flex-grow: 1;
+  --paddingSize: 2rem;
+  padding: var(--paddingSize);
+  gap: var(--paddingSize);
+  flex-grow: 1;
 
-    & > * {
-        border-radius: 5px;
-    }
+  & > * {
+    border-radius: 5px;
+  }
 }
 
 .tasklist-container {
-    width: 350px;
-    min-height: 40%;
-    flex: 1 0 auto;
-    border: solid 2px var(--dialog-border-color);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+  width: 350px;
+  min-height: 40%;
+  flex: 1 0 auto;
+  border: solid 2px var(--dialog-border-color);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .tasklist-header {
-    overflow: hidden;
-    border-bottom: solid 2px var(--dialog-border-color);
-    height: fit-content;
+  overflow: hidden;
+  border-bottom: solid 2px var(--dialog-border-color);
+  height: fit-content;
 
-    & > button {
-        background-color: rgb(var(--positive-green));
-        font-size: 1.4rem;
+  & > button {
+    background-color: rgb(var(--positive-green));
+    font-size: 1.4rem;
 
-        border: none;
-        border-right: solid 2px var(--dialog-border-color);
-    }
+    border: none;
+    border-right: solid 2px var(--dialog-border-color);
+  }
 }
 
 .project-todos {
-    flex: 1 1 100px;
-    padding: 10px;
-    overflow-y: scroll;
+  flex: 1 1 100px;
+  padding: 10px;
+  overflow-y: scroll;
 }
 
 .project-todos > * + * {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .project-description {
-    flex: 1 0 auto;
-    width: 250px;
-    resize: none;
-    border: solid 2px var(--dialog-border-color);
+  flex: 1 0 auto;
+  width: 250px;
+  resize: none;
+  border: solid 2px var(--dialog-border-color);
 }
 
 .cancel {
-    border: none;
-    border-left: solid var(--dialog-border-color) 3px;
+  border: none;
+  border-left: solid var(--dialog-border-color) 3px;
 }
 
 .confirm {
-    width: 100%;
-    height: 60px;
-    font-size: 24px;
+  width: 100%;
+  height: 40px;
+  font-size: 24px;
 
-    border: none;
-    background-color: rgb(var(--secondary-color));
+  border: none;
+  background-color: rgb(var(--secondary-color));
 }
